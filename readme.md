@@ -74,13 +74,29 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 Feel free to reach out to me at [m3l0dy.144@gmail.com](mailto:m3l0dy.144@gmail.com) for any questions or feedback.
+> If you like this site go ahead and fork it on GitHub and dont forget to give it a star ⭐
+
 
 ---
 
 ### Acknowledgments
 
-- Powered by basic HTML and CSS.
-- Inspired by Creative biolink websites
+- Powered by basic HTML, CSS and JS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--### Key Sections of the README
