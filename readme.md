@@ -1,6 +1,6 @@
 # Biolink Website
 
-This is a simple static biolink website, designed to display links to your social media profiles, portfolio, resume, and other personal information. It is built using basic HTML, CSS, and JavaScript.
+This is a simple static biolink website, designed to display links to your social media profiles, portfolio, resume, and other personal information. It is built using basic HTML, CSS, and JavaScript. 
 
 ## Directory Structure
 
@@ -64,6 +64,9 @@ Alternatively, you can deploy to **Netlify** or **Vercel** by linking your GitHu
   - **`public/assets/icons/`**: Favicon and other icon files are stored here.
   - **`public/assets/docs/`**: Contains files like your resume, which can be linked to the website.
 
+## Purpose
+Just some creative exploration with AI ;) for learning HTML, CSS, and JS.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -71,13 +74,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 Feel free to reach out to me at [m3l0dy.144@gmail.com](mailto:m3l0dy.144@gmail.com) for any questions or feedback.
+> If you like this site go ahead and fork it on GitHub and dont forget to give it a star ⭐
+
 
 ---
 
 ### Acknowledgments
 
-- Powered by basic HTML and CSS.
-- Inspired by creative biolink websites
+- Powered by basic HTML, CSS and JS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--### Key Sections of the README
 
