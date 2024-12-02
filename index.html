@@ -2,10 +2,118 @@
 <html>
 
 <head>
+    <title>Bloom, Melody</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="public/assets/icons/favicon.ico">
     <link rel="stylesheet" href="styles/styles.css">
+
+    <style>
+        /* Theme Toggle Styles */
+        :root {
+            /* Light Mode Colors */
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --accent-color: #643633;
+            --secondary-background: #ffffff;
+            --magical-particle-color: rgba(100, 54, 51, 0.2);
+            --wand-color: #8B4513;
+        }
+
+        [data-theme='dark'] {
+            /* Dark Mode Colors */
+            --background-color: #1a1a2e;
+            --text-color: #e0e0e0;
+            --accent-color: #f8d433;
+            --secondary-background: #16213e;
+            --magical-particle-color: rgba(248, 212, 51, 0.2);
+            --wand-color: #DEB887;
+        }
+
+        .lumos-nox-toggle {
+            position: fixed;
+            top: 10px;
+            right: 100px;
+            z-index: 1000;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #theme-toggle .wand-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--wand-color);
+            transition: transform 0.3s ease;
+        }
+
+        #theme-toggle:hover .wand-icon {
+            transform: rotate(20deg);
+        }
+
+        #theme-toggle .toggle-text {
+            display: none;
+            /* Hidden for cleaner look */
+        }
+    </style>
+
+    <script>
+        // Theme Toggle Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlElement = document.documentElement;
+            const themeToggle = document.createElement('div');
+            themeToggle.className = 'lumos-nox-toggle';
+            themeToggle.innerHTML = `
+            <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                <svg class="wand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6v12l5-5z"/>
+                </svg>
+                <span class="toggle-text">Lumos/Nox</span>
+            </button>
+        `;
+
+            // Insert the toggle at the top of the body
+            document.body.insertBefore(themeToggle, document.body.firstChild);
+
+            const themeToggleButton = document.getElementById('theme-toggle');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', savedTheme);
+
+            function toggleTheme() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+
+            themeToggleButton.addEventListener('click', toggleTheme);
+        });
+
+        // Additional theme-specific adjustments
+        function applyThemeAdjustments() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const body = document.body;
+
+            if (theme === 'dark') {
+                body.classList.add('dark-theme');
+            } else {
+                body.classList.remove('dark-theme');
+            }
+        }
+
+        // Apply theme on load and when theme changes
+        document.addEventListener('DOMContentLoaded', applyThemeAdjustments);
+    </script>
 </head>
 
 
@@ -22,7 +130,7 @@
                 fill="currentColor" class="octo-body" />
         </svg>
     </a>
-    
+
     <div class="page-wrapper">
         <div class="layout-container">
             <div class="container">
@@ -40,15 +148,17 @@
                     <img src="public/assets/images/image.gif" alt="Profile" class="profile-image">
                 </div>
 
-                <h1 class="name">Hermione Granger</h1>
+                <h1 class="name">Melody Bloom</h1>
 
                 <div class="about">
-                    As a first-year coder, I've discovered that my love for problem-solving is as magical as finding the
-                    perfect spell in a dusty old tome.
-                    My curiosity for computer science, web development, and operating systems is boundless—almost as if
-                    I swallowed a curiosity potion.
-                    Who knew that understanding and implementing algorithms could be as satisfying as catching a Golden
-                    Snitch?
+                    <p>I’m Melody, a programmer with a Ravenclaw mindset— curious, analytical, and eager to learn. What
+                        started as solving daily challenging puzzles quickly became an exciting quest for knowledge. I’m
+                        driven by the thrill of problem-solving and the potential to innovate.</p>
+                    <p>Though I’m still learning the craft, I embrace every bug and setback as part of the learning
+                        process. Whether it’s experimenting with languages, exploring data structures, or automating
+                        tasks (a witch can dream <i>right</i>?), I’m all in—committed to continuous improvement.</p>
+                    <p>The world of computer science is vast, from OS to DBs and web development. I’m drawn to exploring
+                        new possibilities and creating solutions that push boundaries and make an impact.</p>
                 </div>
 
                 <a href="public/assets/docs/resume.pdf" class="resume-button">View my Resume</a>
@@ -302,9 +412,13 @@
                     });
                 });
             </script>
+
+
             </head>
 
+
             <body>
+
                 <div class="marauders-map">
                     <div class="map-trigger">
                         <div class="parchment">
@@ -317,7 +431,7 @@
                         <div class="parchment-content">
                             <div class="map-header">
                                 <div class="ink-line"></div>
-                                <h2>SELECT * FROM restricted_section WHERE weird = 'projects/existential-crisis'</h2>
+                                <h2>SELECT * FROM restricted_section WHERE projects = 'ideas'</h2>
                                 <div class="ink-line"></div>
                             </div>
 
@@ -326,32 +440,10 @@
                             <div class="project-cards">
                                 <div class="project-card">
                                     <div class="project-ink">
-                                        <h3>Library Database Management System</h3>
-                                        <p>This project involves the development of a Library Management System that
-                                            leverages Python and SQL for database management essentially implementing
-                                            basic CRUD operations. The system is designed to handle such basic library
-                                            functions by retrieving book and user information—along with book
-                                            transactions, due dates, and penalties.</p>
-                                        <div class="project-tech"><b>Python • MySQL</b></div>
-                                        <a href="https://github.com/flurry101/Library-DBMS" class="project-link">View
-                                            Project</a>
-                                    </div>
-                                </div>
-
-                                <div class="project-card">
-                                    <div class="project-ink">
                                         <h3>Magical Harry Potter-Themed Website</h3>
-                                        <p>A Responsive, Animated Template for Your Personal Info and Projects.</p>
+                                        <p>A Responsive, Animated Template for Your Personal information, Social Media
+                                            Links and Projects.</p>
                                         <div class="project-tech"><b>HTML • CSS • Javascript</b></div>
-                                        <a href="#" class="project-link">View Project</a>
-                                    </div>
-                                </div>
-
-                                <div class="project-card">
-                                    <div class="project-ink">
-                                        <h3>Quotomania (In progress)</h3>
-                                        <p>A Discord bot perfectly Suited for all kinds of Quotes. </p>
-                                        <div class="project-tech"><b>Discord.py • Python • Quotable.io</b></div>
                                         <a href="#" class="project-link">View Project</a>
                                     </div>
                                 </div>
@@ -361,7 +453,86 @@
                                 <span>Mischief Managed</span>
                             </div>
                         </div>
+                    </div> <br>
+                    <div class="magical-display-container">
+                        <div class="broomstick">
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                        </div>
+                        <div class="time-location-content">
+                            <div class="time-display">
+                                <svg class="icon time-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span id="current-time">Loading time...</span>
+                            </div>
+                            <div class="location-display">
+                                <svg class="icon location-icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span id="current-location">Detecting location...</span>
+                            </div>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const timeDisplay = document.getElementById('current-time');
+                                const locationDisplay = document.getElementById('current-location');
+
+                                // Time update function
+                                function updateTime() {
+                                    const now = new Date();
+                                    timeDisplay.textContent = now.toLocaleTimeString([], {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        second: '2-digit'
+                                    });
+                                }
+
+                                // Location detection function
+                                function detectLocation() {
+                                    if ("geolocation" in navigator) {
+                                        navigator.geolocation.getCurrentPosition(
+                                            (position) => {
+                                                const { latitude, longitude } = position.coords;
+                                                locationDisplay.textContent = `${latitude.toFixed(2)}°N, ${longitude.toFixed(2)}°E`;
+                                            },
+                                            (error) => {
+                                                switch (error.code) {
+                                                    case error.PERMISSION_DENIED:
+                                                        locationDisplay.textContent = "Location spell blocked ✨";
+                                                        break;
+                                                    case error.POSITION_UNAVAILABLE:
+                                                        locationDisplay.textContent = "Location realm unreachable 🧙‍♀️";
+                                                        break;
+                                                    case error.TIMEOUT:
+                                                        locationDisplay.textContent = "Location detection timed out 🕰️";
+                                                        break;
+                                                    default:
+                                                        locationDisplay.textContent = "Unknown magical error";
+                                                }
+                                            }
+                                        );
+                                    } else {
+                                        locationDisplay.textContent = "Geolocation not supported";
+                                    }
+                                }
+
+                                updateTime();
+                                detectLocation();
+                                setInterval(updateTime, 1000);
+                            });
+                        </script>
                     </div>
+
+
                 </div>
 
                 <div class="social-container">
@@ -373,7 +544,7 @@
                                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                     </a>
-                    <a href="mailto:your.email@example.com" class="icon-wrapper">
+                    <a href="mailto:m3l0dy.144@gmail.com" class="icon-wrapper">
                         <span class="magical-tooltip">Send me an Owl</span>
                         <svg viewBox="0 0 24 24">
                             <path
@@ -389,7 +560,7 @@
                     </a>
                 </div>
 
-                <div class="coding-platforms">
+                <!--                <div class="coding-platforms">
                     <a href="https://www.hackerrank.com/flux_bsv" class="icon-wrapper" target="_blank"
                         rel="noopener noreferrer">
                         <span class="magical-tooltip">HackerRank</span>
@@ -406,11 +577,17 @@
                                 d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v13.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V4.5c0-.828.672-1.5 1.5-1.5h3zm9 9c.828 0 1.5.672 1.5 1.5v4.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V13.5c0-.828.672-1.5 1.5-1.5h3z" />
                         </svg>
                     </a>
-                </div>
+                </div>-->
 
                 <div class="footer">
-                    Made with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" preserveAspectRatio="xMidYMid" viewBox="0 0 256 257"><path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"/></svg> by BSV.
+                    Made with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                        preserveAspectRatio="xMidYMid" viewBox="0 0 256 257">
+                        <path fill="#D97757"
+                            d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z" />
+                    </svg> by Melody.
                 </div>
+
+
             </body>
 
 </html>
